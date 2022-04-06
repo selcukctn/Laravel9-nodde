@@ -51,7 +51,6 @@
 @section('slider')
     @include('home.slider')
 @show
-
 @section('content')
 
 @show
