@@ -1,10 +1,10 @@
-@extends('layouts.frontbase')
+@extends('layouts.catagory')
 
-@section('title','Nodde')
+@section('title','Kategoriler')
 
 
 
-@section('content')
+@section('content-area')
     <div class="content_header">
         <h2>Son Paylaşılanlar</h2>
     </div>
@@ -28,5 +28,4 @@
     <div class="buttons_area" style="margin-bottom:10px;width: 100%; height: auto; justify-content: center; align-items: center; display: flex;">
         <button >Tümünü Gör</button>
     </div>
-
 @endsection

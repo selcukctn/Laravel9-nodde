@@ -28,8 +28,8 @@
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="./index.html" class="nav-link px-2 text-secondary">Anasayfa</a></li>
-                <li><a href="./kategoriler.html" class="nav-link px-2 text-white">Kategoriler</a></li>
+                <li><a href="/" class="nav-link px-2 text-secondary">Anasayfa</a></li>
+                <li><a href="/category" class="nav-link px-2 text-white">Kategoriler</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">İletişim</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Hakkımızda</a></li>
             </ul>

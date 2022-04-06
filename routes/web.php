@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/',[HomeController::class,'index'])->name(name:'home');
-Route::get('/testhome',[HomeController::class,'testhome'])->name(name:'testhome');
+Route::get('/category',[HomeController::class,'category'])->name(name:'category');
 
 Route::middleware([
     'auth:sanctum',
