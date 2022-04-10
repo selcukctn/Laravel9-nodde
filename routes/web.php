@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPanel\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
 use Illuminate\Support\Facades\Route;
@@ -23,8 +24,13 @@ Route::get('/', function () {
 
 Route::get('/',[HomeController::class,'index'])->name(name:'home');
 Route::get('/category',[HomeController::class,'category'])->name(name:'category');
-Route::get('/admin',[AdminHomeController::class,'index'])->name(name:'admin');
 
+//admin routes
+Route::get('/admin',[AdminHomeController::class,'index'])->name(name:'admin');
+//admin category
+Route::get('admin/category',[CategoryController::class,'index'])->name(name:'admin_category');
+Route::get('admin/category/create',[CategoryController::class,'create'])->name(name:'admin_category_create');
+Route::post('admin/category/store',[CategoryController::class,'store'])->name(name:'admin_category_store');
 
 
 
