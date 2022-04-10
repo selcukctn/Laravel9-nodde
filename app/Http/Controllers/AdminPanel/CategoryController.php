@@ -40,6 +40,7 @@ class CategoryController extends Controller
         $data->parent_id=0;
         $data->title = $request->title;
         $data->description = $request->description;
+        $data->keywords = $request->keywords;
         $data->status = $request->status;
         $data->save();
     }
