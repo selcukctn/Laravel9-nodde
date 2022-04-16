@@ -4,18 +4,21 @@ namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use http\Params;
 use Illuminate\Http\Request;
+use  Illuminate\Contracts\Queue\QueueableCollection;
 
 class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Request
      */
     public function index()
     {
-        return view(view:'admin.category.index');
+        $data=Category::all();
+        return view('admin.category.index', ['data'=>$data]);
     }
 
     /**
@@ -43,6 +46,7 @@ class CategoryController extends Controller
         $data->keywords = $request->keywords;
         $data->status = $request->status;
         $data->save();
+        return redirect('admin/category');
     }
 
     /**
