@@ -16,10 +16,9 @@
                         <th>#</th>
                         <th>Açıklama</th>
                         <th>Anahtar Kelimeler</th>
-                        <th>Table heading</th>
-                        <th>Table heading</th>
-                        <th>Table heading</th>
-                        <th>Table heading</th>
+                        <th>Durum</th>
+                        <th>Resim</th>
+                        <th>Düzenle</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -27,10 +26,11 @@
                         <th scope="row">1</th>
                         <td>{{$data->description}}</td>
                         <td>{{$data->keywords}}</td>
+                        <td>{{$data->status}}</td>
                         <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
+                        <td><div class="card-action">
+                                <a href="/admin/category/edit/{{$data->id}}" class="btn btn-success">Düzenle</a>
+                            </div></td>
                     </tr>
                     </tbody>
                 </table>
