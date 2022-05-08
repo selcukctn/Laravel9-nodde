@@ -30,20 +30,23 @@
                     <tbody>
                     @foreach($data as $rs)
                     <tr>
-                        <th scope="row">1</th>
                         <td>{{$rs->id}}</td>
                         <td>{{$rs->title}}</td>
                         <td>{{$rs->keywords}}</td>
                         <td>{{$rs->description}}</td>
                         <td>{{$rs->image}}</td>
-                        <td><a href="/admin/category/edit{{$rs->id}}/">Edit</a></td>
-                        <td><a href="/admin/category/delete{{$rs->id}}/">Delete</a></td>
-                        <td><a href="/admin/category/show{{$rs->id}}/">Show</a></td>
+                        <td>{{$rs->status}}</td>
+                        <td><a href="/admin/category/edit/{{$rs->id}}/">Edit</a></td>
+                        <td><a href="/admin/category/destroy/{{$rs->id}}/">Delete</a></td>
+                        <td><a href="/admin/category/show/{{$rs->id}}/">Show</a></td>
                     </tr>
                     @endforeach
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div class="card-action">
+            <a href="/admin/category/create" class="btn btn-success">Kategori Ekle</a>
         </div>
     </div>
 
