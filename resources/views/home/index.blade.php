@@ -27,6 +27,7 @@
     </div>
     <div class="buttons_area" style="margin-bottom:10px;width: 100%; height: auto; justify-content: center; align-items: center; display: flex;">
         <button >Tümünü Gör</button>
+        <a href="/createpost" class="nav-link px-2 text-white"><button type="button" class="btn btn-warning">Paylaş</button></a>
     </div>
 
 @endsection

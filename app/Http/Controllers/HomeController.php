@@ -12,4 +12,8 @@ class HomeController extends Controller
     public function category(){
         return view(view:'category.index');
     }
+    public function createpost(){
+        return view(view:'createpost.index');
+    }
+
 }

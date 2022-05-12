@@ -25,18 +25,22 @@ Route::get('/', function () {
 
 Route::get('/',[HomeController::class,'index'])->name(name:'home');
 Route::get('/category',[HomeController::class,'category'])->name(name:'category');
+Route::get('/createpost',[HomeController::class,'createpost'])->name(name:'createpost');
 
-//admin routes
-Route::get('/admin',[AdminHomeController::class,'index'])->name(name:'admin');
-//admin category
-Route::get('admin/category',[AdminCategoryController::class,'index'])->name(name:'admin_category');
-Route::get('admin/category/create',[AdminCategoryController::class,'create'])->name(name:'admin_category_create');
-Route::post('admin/category/store',[AdminCategoryController::class,'store'])->name(name:'admin_category_store');
-Route::get('admin/category/edit/{id}',[AdminCategoryController::class,'edit'])->name(name:'admin_category_edit');
-Route::post('admin/category/update/{id}',[AdminCategoryController::class,'update'])->name(name:'admin_category_update');
-Route::get('admin/category/destory/{id}',[AdminCategoryController::class,'destroy'])->name(name:'admin_category_destroy');
-Route::get('admin/category/show/{id}',[AdminCategoryController::class,'show'])->name(name:'admin_category_show');
-
+Route::prefix('admin')->name('admin.')->group(function (){
+    //admin routes
+    Route::get('/',[AdminHomeController::class,'index'])->name(name:'admin');
+    //admin category
+    Route::prefix('/category')->name('category.')->controller(AdminCategoryController::class)->group(function (){
+        Route::get('/','index')->name(name:'admin_category');
+        Route::get('/create','create')->name(name:'admin_category_create');
+        Route::post('/store','store')->name(name:'admin_category_store');
+        Route::get('/edit/{id}','edit')->name(name:'admin_category_edit');
+        Route::post('/update/{id}','update')->name(name:'admin_category_update');
+        Route::get('/destory/{id}','destroy')->name(name:'admin_category_destroy');
+        Route::get('/show/{id}','show')->name(name:'admin_category_show');
+    });
+});
 
 Route::middleware([
     'auth:sanctum',
