@@ -13,6 +13,15 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
+                        <label for="squareInput">Main Kategori Adı</label>
+                        <select class="from-control select2" name="parent_id">
+                            <option value="0" selected="selected">Main Kategori</option>
+                            @foreach($data as $rs)
+                                <option value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="squareInput">Kategori Adı</label>
                         <input type="text" class="form-control input-square" id="squareInput" placeholder="Kategori Adı..." name="title" required>
                     </div>

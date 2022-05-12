@@ -11,6 +11,15 @@
             </div>
             <form action="/admin/category/update/{{$data->id}}" method="post">
                 @csrf
+                <div class="form-group">
+                    <label for="squareInput">Main Kategori Adı</label>
+                    <select class="from-control select2" name="parent_id">
+                        <option value="0" selected="selected">Main Kategori</option>
+                        @foreach($datalist as $rs)
+                            <option value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="card-body">
                     <div class="form-group">
                         <label for="squareInput">Kategori Adı</label>
