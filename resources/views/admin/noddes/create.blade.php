@@ -9,7 +9,7 @@
             <div class="card-header">
                 <div class="card-title">Nodde Olustur</div>
             </div>
-            <form action="/admin/noddes/store" method="post">
+            <form action="/admin/noddes/store" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">

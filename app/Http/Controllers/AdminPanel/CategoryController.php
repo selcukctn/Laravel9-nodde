@@ -7,6 +7,8 @@ use App\Models\Category;
 use http\Params;
 use Illuminate\Http\Request;
 use  Illuminate\Contracts\Queue\QueueableCollection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -58,7 +60,7 @@ class CategoryController extends Controller
         $data->description = $request->description;
         $data->keywords = $request->keywords;
         $data->status = $request->status;
-        if($request->file('images')){
+        if($request->file('image')){
             $data->image=$request->file('image')->store('images');
         }
         $data->save();
@@ -108,6 +110,9 @@ class CategoryController extends Controller
         $data->description = $request->description;
         $data->keywords = $request->keywords;
         $data->status = $request->status;
+        if($request->file('image')){
+            $data->image=$request->file('image')->store('images');
+        }
         $data->save();
         return redirect('admin/category');
     }
@@ -118,9 +123,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Category $category,$id)
+    public function destroy(Category $category,$id)
     {
         $data=Category::find($id);
+        Storage::delete($data->image);
         $data->delete();
         return redirect('admin/category');
     }

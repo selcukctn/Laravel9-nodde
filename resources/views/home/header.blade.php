@@ -39,8 +39,8 @@
             </form>
 
             <div class="text-end">
-                <button type="button" class="btn btn-outline-light me-2">Giriş Yap</button>
-                <button type="button" class="btn btn-warning">Kayıt Ol</button>
+                <a href="/login" type="button" class="btn btn-outline-light me-2">Giriş Yap</a>
+                <a href="/register" type="button" class="btn btn-outline-light me-2">Kayıt ol</a>
             </div>
         </div>
     </div>

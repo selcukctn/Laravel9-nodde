@@ -9,7 +9,7 @@
             <div class="card-header">
                 <div class="card-title">Kategori Olustur</div>
             </div>
-            <form action="/admin/category/store" method="post">
+            <form action="/admin/category/store" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">

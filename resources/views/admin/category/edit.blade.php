@@ -9,7 +9,7 @@
             <div class="card-header">
                 <div class="card-title">{{$data->title}} Düzenle</div>
             </div>
-            <form action="/admin/category/update/{{$data->id}}" method="post">
+            <form action="/admin/category/update/{{$data->id}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="squareInput">Main Kategori Adı</label>
@@ -45,6 +45,12 @@
                         <label for="exampleFormControlFile1">Resim Seç</label>
                         <input type="file" class="form-control-file" id="exampleFormControlFile1">
                     </div>
+                    <td>
+                        @if($rs->image)
+                            <img src="{{Storage::url($rs->image)}}" width="50" height="50">
+                            <button onclick="{{Storage::delete($rs->image)}}" title="Resmi Sil" style="width: 100px;height: 25px;"/>
+                        @endif
+                    </td>
                 </div>
                 <div class="card-action">
                     <button class="btn btn-success" type="submit">Güncelle</button>

@@ -36,10 +36,14 @@
                         <td>{{$rs->title}}</td>
                         <td>{{$rs->keywords}}</td>
                         <td>{{$rs->description}}</td>
-                        <td>{{$rs->image}}</td>
+                        <td>
+                            @if($rs->image)
+                                <img src="{{Storage::url($rs->image)}}" width="50" height="50">
+                            @endif
+                        </td>
                         <td>{{$rs->status}}</td>
                         <td><a href="/admin/category/edit/{{$rs->id}}/">Edit</a></td>
-                        <td><a href="/admin/category/destroy/{{$rs->id}}/">Delete</a></td>
+                        <td><a href="/admin/category/destroy/{{$rs->id}}/" onclick="return confirm('Silmek istediğine emin misin?')">Delete</a></td>
                         <td><a href="/admin/category/show/{{$rs->id}}/">Show</a></td>
                     </tr>
                     @endforeach

@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="card-action">
-            <a href="/admin/category/create" class="btn btn-success">Kategori Ekle</a>
+            <a href="/admin/noddes/create" class="btn btn-success">Nodde Ekle</a>
         </div>
     </div>
 
