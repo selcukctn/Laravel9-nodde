@@ -50,9 +50,6 @@ class AdminNoddesController extends Controller
         $data->detail = $request->detail;
         $data->keywords = $request->keywords;
         $data->status = $request->status;
-        if($request->file('images')){
-            $data->image=$request->file('image')->store('images');
-        }
         if($request->file('file')){
             $data->file=$request->file('file')->store('noddefiles');
         }
@@ -105,9 +102,6 @@ class AdminNoddesController extends Controller
         $data->detail = $request->detail;
         $data->keywords = $request->keywords;
         $data->status = $request->status;
-        if($request->file('images')){
-            $data->image=$request->file('image')->store('images');
-        }
         if($request->file('file')){
             $data->file=$request->file('file')->store('noddefiles');
         }

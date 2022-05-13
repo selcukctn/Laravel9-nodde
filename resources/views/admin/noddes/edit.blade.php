@@ -42,7 +42,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">Resim Seç</label>
+                        <label for="exampleFormControlFile1">Dosya Seç</label>
                         <input type="file" class="form-control-file" id="exampleFormControlFile1">
                     </div>
                 </div>

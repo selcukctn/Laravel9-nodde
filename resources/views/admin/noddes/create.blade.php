@@ -48,10 +48,6 @@
                         <label for="exampleFormControlFile1">Dosya Seç</label>
                         <input type="file" class="form-control-file" id="exampleFormControlFile1" name="file">
                     </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Resim Seç</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
-                    </div>
                 </div>
                 <div class="card-action">
                     <button class="btn btn-success" type="submit">Kaydet</button>
