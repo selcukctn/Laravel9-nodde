@@ -4,24 +4,13 @@ namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Noddes;
 use http\Params;
 use Illuminate\Http\Request;
 use  Illuminate\Contracts\Queue\QueueableCollection;
 
-class CategoryController extends Controller
+class AdminNoddesController extends Controller
 {
-    protected $appends = [
-        'getParentsTree'
-    ];
-    public static function getParentsTree($category,$title){
-        if($category->parent_id==0){
-            return $title;
-        }
-        $parent = Category::find($category->parent_id);
-        $title = $parent->title . ' > ' . $title;
-        return  CategoryController::getParentsTree($parent,$title);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -29,8 +18,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data=Category::all();
-        return view('admin.category.index', ['data'=>$data]);
+        $data=Noddes::all();
+        return view('admin.noddes.index', ['data'=>$data]);
     }
 
     /**
@@ -40,8 +29,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $data=Category::all();
-        return view('admin.category.create', ['data'=>$data]);
+        $data=Noddes::all();
+        $datalist=Category::all();
+        return view('admin.noddes.create', ['data'=>$data,'datalist'=>$datalist]);
     }
 
     /**
@@ -52,42 +42,47 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data=new Category();
-        $data->parent_id=$request->parent_id;
+        $data=new Noddes();
+        $data->category_id=$request->category_id;
+        $data->user_id=0;
         $data->title = $request->title;
         $data->description = $request->description;
+        $data->detail = $request->detail;
         $data->keywords = $request->keywords;
         $data->status = $request->status;
         if($request->file('images')){
             $data->image=$request->file('image')->store('images');
         }
+        if($request->file('file')){
+            $data->file=$request->file('file')->store('noddefiles');
+        }
         $data->save();
-        return redirect('admin/category');
+        return redirect('admin/noddes');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Noddes  $nodde
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category, $id)
+    public function show(Noddes $noddes, $id)
     {
-        $data=Category::find($id);
-        return view('admin.category.show', ['data'=>$data]);
+        $data=Noddes::find($id);
+        return view('admin.noddes.show', ['data'=>$data]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Noddes  $nodde
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category,$id)
+    public function edit(Noddes $noddes,$id)
     {
-        $data=Category::find($id);
+        $data=Noddes::find($id);
         $datalist=Category::all();
-        return view('admin.category.edit', [
+        return view('admin.noddes.edit', [
             'data'=>$data,
             'datalist'=>$datalist
         ]);
@@ -97,31 +92,39 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Noddes  $nodde
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category,$id)
+    public function update(Request $request, Noddes $noddes,$id)
     {
-        $data=Category::find($id);
-        $data->parent_id=$request->parent_id;
+        $data=Noddes::find($id);
+        $data->category_id=$request->category_id;
+        $data->user_id=0;
         $data->title = $request->title;
         $data->description = $request->description;
+        $data->detail = $request->detail;
         $data->keywords = $request->keywords;
         $data->status = $request->status;
+        if($request->file('images')){
+            $data->image=$request->file('image')->store('images');
+        }
+        if($request->file('file')){
+            $data->file=$request->file('file')->store('noddefiles');
+        }
         $data->save();
-        return redirect('admin/category');
+        return redirect('admin/noddes');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Noddes  $nodde
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Category $category,$id)
+    public function destroy(Request $request, Noddes $nodde,$id)
     {
-        $data=Category::find($id);
+        $data=Noddes::find($id);
         $data->delete();
-        return redirect('admin/category');
+        return redirect('admin/noddes');
     }
 }
