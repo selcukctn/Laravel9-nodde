@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="tables.html">
+                <a href="/admin/noddes">
                     <i class="la la-th"></i>
                     <p>Paylaşılan Notlar</p>
                 </a>
