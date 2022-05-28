@@ -1,6 +1,6 @@
-@extends('layouts.createpost')
+@extends('layouts.adminbase')
 
-@section('title','Create Post')
+@section('title','Create Nodde')
 
 
 @section('content')

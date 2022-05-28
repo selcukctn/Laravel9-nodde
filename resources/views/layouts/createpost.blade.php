@@ -1,27 +1,40 @@
+<!DOCTYPE html>
 <html lang="tr">
+
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nodde @yield('title')</title>
+    <title>@yield('title')</title>
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/ready.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/demo.css') }}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.png" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
-    <link href="{{ asset('css/kategori.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('css/homepage.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('css/createPostPage.css') }}" rel="stylesheet" type="text/css"/>
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
-    <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
-    <meta name="theme-color" content="#7952b3">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
+    <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/x-icon"/>
+    <link href="{{ asset('css/default.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/component.css') }}" rel="stylesheet" type="text/css"/>
+
+    <script src="{{asset('js/modernizr.custom.js')}}"></script>
     <style>
+        .logo{
+            object-fit: contain;
+            width: 200px;
+            height: 32px;
+            margin-left: -33px;
+        }
+        .btn.btn-warning{
+            background-color: green;
+            border-color: green;
+            color: white;
+        }
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -36,20 +49,46 @@
             }
         }
     </style>
+
     @livewireStyles
     @yield('head')
 </head>
+@include('home.header')
 
-<body>
-@section('create-area')
-    @include('category.content-area-catagory')
+@section('content')
+
 @show
 
 
-<script src="{{asset('js/sidebars.js')}}"></script>
-<script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+<body>
+
+
+
+
+
+
+
+
+<script src="{{asset('js/core/jquery.3.2.1.min.js')}}"></script>
+<script src="{{asset('js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
+<script src="{{asset('js/core/popper.min.js')}}"></script>
+<script src="{{asset('js/core/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/plugin/chartist/chartist.min.js')}}"></script>
+<script src="{{asset('js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js')}}"></script>
+<script src="{{asset('js/plugin/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
+<script src="{{asset('js/plugin/bootstrap-toggle/bootstrap-toggle.min.js')}}"></script>
+<script src="{{asset('js/plugin/jquery-mapael/jquery.mapael.min.js')}}"></script>
+<script src="{{asset('js/plugin/jquery-mapael/maps/world_countries.min.js')}}"></script>
+<script src="{{asset('js/plugin/chart-circle/circles.min.js')}}"></script>
+<script src="{{asset('js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
+<script src="{{asset('js/ready.min.js')}}"></script>
+<script src="{{asset('js/js/demo.js')}}"></script>
 </body>
+
+
+
+
+
+
 </html>

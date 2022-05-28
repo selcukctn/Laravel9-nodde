@@ -17,10 +17,6 @@ class HomeController extends Controller
         $data=Noddes::all();
         return view('category.index', ['data'=>$data]);
     }
-    public function createpost(){
-        $data=Noddes::all();
-        $datalist=Category::all();
-        return view('createpost.index', ['data'=>$data, 'datalist'=>$datalist]);
-    }
+
 
 }
