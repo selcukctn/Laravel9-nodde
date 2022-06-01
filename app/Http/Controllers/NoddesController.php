@@ -33,6 +33,12 @@ class NoddesController extends Controller
         $datalist=Category::all();
         return view('createpost.create', ['data'=>$data,'datalist'=>$datalist]);
     }
+    /**public function create()
+    {
+        $data=Noddes::all();
+        $datalist=Category::all();
+        return view('createpost.create', ['data'=>$data,'datalist'=>$datalist]);
+    }**/
 
     /**
      * Store a newly created resource in storage.
