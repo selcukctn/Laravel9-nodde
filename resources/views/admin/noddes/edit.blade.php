@@ -9,7 +9,7 @@
             <div class="card-header">
                 <div class="card-title">{{$data->title}} Düzenle</div>
             </div>
-            <form action="/admin/category/update/{{$data->id}}" method="post">
+            <form action="/admin/noddes/update/{{$data->id}}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="squareInput">Main Kategori Adı</label>

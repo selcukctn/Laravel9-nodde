@@ -38,9 +38,9 @@
                         <td>{{$rs->description}}</td>
                         <td>{{$rs->image}}</td>
                         <td>{{$rs->status}}</td>
-                        <td><a href="/admin/category/edit/{{$rs->id}}/">Edit</a></td>
-                        <td><a href="/admin/category/destroy/{{$rs->id}}/">Delete</a></td>
-                        <td><a href="/admin/category/show/{{$rs->id}}/">Show</a></td>
+                        <td><a href="/admin/noddes/edit/{{$rs->id}}/">Edit</a></td>
+                        <td><a href="/admin/noddes/destroy/{{$rs->id}}/">Delete</a></td>
+                        <td><a href="/admin/noddes/show/{{$rs->id}}/">Show</a></td>
                     </tr>
                     @endforeach
                     </tbody>

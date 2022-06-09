@@ -17,7 +17,8 @@ class HomeController extends Controller
     }
     public function category(){
         $data=Noddes::all();
-        return view('category.index', ['data'=>$data]);
+        $datalist=Category::all();
+        return view('category.index', ['data'=>$data, 'datalist'=>$datalist]);
     }
     public function iletisim(){
         return view('iletisim.index');
@@ -29,5 +30,22 @@ class HomeController extends Controller
     public function faq(){
         $data=faq::all();
         return view('layouts.faq', ['data'=>$data]);
+    }/**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Noddes  $noddes
+     * @return \Illuminate\Http\Response
+     */
+    public function postview(Noddes $noddes, $id){
+        $datalist=Category::all();
+        $data=DB::table('noddes')->where('id',$id)->get();
+        return view('postview.index',[
+                'data'=>$data,
+                'datalist'=>$datalist
+            ]
+        );
+
     }
+
+
 }

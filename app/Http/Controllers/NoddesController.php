@@ -8,7 +8,8 @@ use App\Models\Noddes;
 use http\Params;
 use Illuminate\Http\Request;
 use  Illuminate\Contracts\Queue\QueueableCollection;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 class NoddesController extends Controller
 {
     /**
@@ -19,7 +20,8 @@ class NoddesController extends Controller
     public function index()
     {
         $data=Noddes::all();
-        return view('admin.noddes.index', ['data'=>$data]);
+        $datalist=Category::all();
+        return view('createpost.index', ['data'=>$data, 'datalist'=>$datalist]);
     }
 
     /**
@@ -31,7 +33,7 @@ class NoddesController extends Controller
     {
         $data=Noddes::all();
         $datalist=Category::all();
-        return view('admin.noddes.create', ['data'=>$data,'datalist'=>$datalist]);
+        return view('createpost.index', ['data'=>$data,'datalist'=>$datalist]);
     }
 
     /**
@@ -44,35 +46,39 @@ class NoddesController extends Controller
     {
         $data=new Noddes();
         $data->category_id=$request->category_id;
-        $data->user_id=0;
+        $data->user_id=Auth::id() ? Auth::id() : 0;
         $data->title = $request->title;
         $data->description = $request->description;
         $data->detail = $request->detail;
         $data->keywords = $request->keywords;
-        $data->status = $request->status;
+        $data->status = false;
         if($request->file('file')){
             $data->file=$request->file('file')->store('noddefiles');
         }
         $data->save();
-        return redirect('admin/noddes');
+        return redirect('category');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Noddes  $nodde
+     * @param  \App\Models\Noddes  $noddes
      * @return \Illuminate\Http\Response
      */
     public function show(Noddes $noddes, $id)
     {
-        $data=Noddes::find($id);
-        return view('admin.noddes.show', ['data'=>$data]);
+        $datalist=Category::all();
+        $data=DB::table('noddes')->where('id',$id)->get();
+        return view('postview.index',[
+                'data'=>$data,'datalist'=>$datalist
+            ]
+        );
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Noddes  $nodde
+     * @param  \App\Models\Noddes  $noddes
      * @return \Illuminate\Http\Response
      */
     public function edit(Noddes $noddes,$id)
@@ -89,7 +95,7 @@ class NoddesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Noddes  $nodde
+     * @param  \App\Models\Noddes  $noddes
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Noddes $noddes,$id)
@@ -112,10 +118,10 @@ class NoddesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Noddes  $nodde
+     * @param  \App\Models\Noddes  $noddes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Noddes $nodde,$id)
+    public function destroy(Request $request, Noddes $noddes,$id)
     {
         $data=Noddes::find($id);
         $data->delete();

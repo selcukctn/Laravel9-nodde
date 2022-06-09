@@ -38,13 +38,6 @@
                         <input type="text" class="form-control input-square" id="squareInput" placeholder="Anahtar Kelime" name="keywords">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Gizle-Göster</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="status" required>
-                            <option>True</option>
-                            <option>False</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label for="exampleFormControlFile1">Dosya Seç</label>
                         <input type="file" class="form-control-file" id="exampleFormControlFile1" name="file">
                     </div>

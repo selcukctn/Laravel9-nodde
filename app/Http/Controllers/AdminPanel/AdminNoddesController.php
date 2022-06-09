@@ -63,7 +63,7 @@ class AdminNoddesController extends Controller
      * @param  \App\Models\Noddes  $nodde
      * @return \Illuminate\Http\Response
      */
-    public function show(Noddes $noddes, $id)
+    public function show(Noddes $nodde, $id)
     {
         $data=Noddes::find($id);
         return view('admin.noddes.show', ['data'=>$data]);
@@ -75,7 +75,7 @@ class AdminNoddesController extends Controller
      * @param  \App\Models\Noddes  $nodde
      * @return \Illuminate\Http\Response
      */
-    public function edit(Noddes $noddes,$id)
+    public function edit(Noddes $nodde,$id)
     {
         $data=Noddes::find($id);
         $datalist=Category::all();
@@ -92,7 +92,7 @@ class AdminNoddesController extends Controller
      * @param  \App\Models\Noddes  $nodde
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Noddes $noddes,$id)
+    public function update(Request $request, Noddes $nodde,$id)
     {
         $data=Noddes::find($id);
         $data->category_id=$request->category_id;
