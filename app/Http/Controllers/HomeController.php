@@ -57,7 +57,8 @@ class HomeController extends Controller
         $data->comment = $request->comment;
         $data->status = false;
         $data->save();
-        return redirect('/');
+
+        return redirect()->route('noddes.noddes_show',['id'=>$request->input('noddes_id')]);
     }
 
 

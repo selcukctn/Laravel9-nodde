@@ -59,15 +59,17 @@ class NoddesController extends Controller
         $data->save();
         return redirect('category');
     }
-    public function commentstore(Request $request)
+    public function storecomment(Request $request)
     {
         $data=new comments();
         $data->noddes_id=$request->noddes_id;
+        $data->rate=$request->rate;
         $data->user_id=Auth::id() ? Auth::id() : 0;
         $data->comment = $request->comment;
         $data->status = false;
         $data->save();
-        return redirect(`createpost/show/{{$request->noddes_id}}`);
+
+        return redirect()->route('/createpost/show/',['id'=>$request->input('noddes_id')]);
     }
 
     /**

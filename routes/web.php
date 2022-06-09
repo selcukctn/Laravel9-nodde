@@ -33,7 +33,9 @@ Route::get('/iletisim',[HomeController::class,'iletisim'])->name(name:'iletisim'
 Route::get('/hakkimizda',[HomeController::class,'hakkimizda'])->name(name:'hakkimizda');
 Route::post('/storecomment',[HomeController::class,'storecomment'])->name(name:'storecomment');
 Route::get('/faq',[HomeController::class,'faq'])->name(name:'faq');
-Route::prefix('/createpost')->name('noddes.')->controller(NoddesController::class)->group(function (){
+Route::get('/createpost/show/{id}',[NoddesController::class,'show'])->name(name:'noddes_show');
+
+Route::prefix('createpost')->name('noddes.')->controller(NoddesController::class)->group(function (){
     Route::get('/','index')->name(name:'noddes');
     Route::get('/create','create')->name(name:'noddes_create');
     Route::post('/store','store')->name(name:'noddes_store');
