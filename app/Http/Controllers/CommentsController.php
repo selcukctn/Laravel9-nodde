@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use  Illuminate\Contracts\Queue\QueueableCollection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-class NoddesController extends Controller
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class NoddesController extends Controller
      */
     public function index()
     {
-        $data=Noddes::all();
+        $data=comments::all();
         $datalist=Category::all();
         return view('createpost.index', ['data'=>$data, 'datalist'=>$datalist]);
     }
@@ -44,22 +44,6 @@ class NoddesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $data=new Noddes();
-        $data->category_id=$request->category_id;
-        $data->user_id=Auth::id() ? Auth::id() : 0;
-        $data->title = $request->title;
-        $data->description = $request->description;
-        $data->detail = $request->detail;
-        $data->keywords = $request->keywords;
-        $data->status = false;
-        if($request->file('file')){
-            $data->file=$request->file('file')->store('noddefiles');
-        }
-        $data->save();
-        return redirect('category');
-    }
-    public function commentstore(Request $request)
     {
         $data=new comments();
         $data->noddes_id=$request->noddes_id;
@@ -94,7 +78,7 @@ class NoddesController extends Controller
      */
     public function edit(Noddes $noddes,$id)
     {
-        $data=Noddes::find($id);
+        $data=comments::find($id);
         $datalist=Category::all();
         return view('admin.noddes.edit', [
             'data'=>$data,
@@ -111,7 +95,7 @@ class NoddesController extends Controller
      */
     public function update(Request $request, Noddes $noddes,$id)
     {
-        $data=Noddes::find($id);
+        $data=comments::find($id);
         $data->category_id=$request->category_id;
         $data->user_id=0;
         $data->title = $request->title;
@@ -134,7 +118,7 @@ class NoddesController extends Controller
      */
     public function destroy(Request $request, Noddes $noddes,$id)
     {
-        $data=Noddes::find($id);
+        $data=comments::find($id);
         $data->delete();
         return redirect('admin/noddes');
     }

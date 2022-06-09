@@ -31,11 +31,13 @@ Route::get('/',[HomeController::class,'index'])->name(name:'home');
 Route::get('/category',[HomeController::class,'category'])->name(name:'category');
 Route::get('/iletisim',[HomeController::class,'iletisim'])->name(name:'iletisim');
 Route::get('/hakkimizda',[HomeController::class,'hakkimizda'])->name(name:'hakkimizda');
+
 Route::get('/faq',[HomeController::class,'faq'])->name(name:'faq');
 Route::prefix('/createpost')->name('noddes.')->controller(NoddesController::class)->group(function (){
     Route::get('/','index')->name(name:'noddes');
     Route::get('/create','create')->name(name:'noddes_create');
     Route::post('/store','store')->name(name:'noddes_store');
+    Route::post('/commentstore','commentstore')->name(name:'noddes_comment_store');
     Route::get('/edit/{id}','edit')->name(name:'noddes_edit');
     Route::post('/update/{id}','update')->name(name:'noddes_update');
     Route::get('/destory/{id}','destroy')->name(name:'noddes_destroy');

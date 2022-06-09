@@ -79,23 +79,19 @@
         <div class="content_container">
             <div class="content_desc">
                 <div class="container">
-                    <form action="/action_page.php">
-                        <label for="fname">First Name</label>
+                    <form action="/createpost/commentstore" method="post" enctype="multipart/form-data">
+                        <label for="fname">username</label>
                         <input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-                        <label for="lname">Last Name</label>
-                        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-
-                        <label for="country">Country</label>
-                        <select id="country" name="country">
-                            <option value="australia">Australia</option>
-                            <option value="canada">Canada</option>
-                            <option value="usa">USA</option>
+                        <label for="country">Oy ver</label>
+                        <select id="country" name="rate">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
                         </select>
 
-                        <label for="subject">Subject</label>
-                        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
+                        <label for="subject">Yorum</label>
+                        <textarea id="subject" name="comment" placeholder="Yorumunuzu Yazınız.." style="height:200px"></textarea>
+                        <input type="text" name="noddes_id" value="{{$rs->id}}">
                         <input type="submit" value="Submit">
                     </form>
                 </div>

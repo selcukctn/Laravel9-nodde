@@ -15,8 +15,11 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('question');
-            $table->string('answer');
+            $table->string('comment');
+            $table->string('rate')->nullable();
+            $table->string('noddes_id');
+            $table->string('user_id');
+            $table->string('ip')->nullable();
             $table->string('status',length: 6)->default('True');
             $table->timestamps();
         });
@@ -31,4 +34,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('comments');
     }
+
 };
