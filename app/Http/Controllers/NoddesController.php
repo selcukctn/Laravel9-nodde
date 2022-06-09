@@ -19,7 +19,7 @@ class NoddesController extends Controller
     public function index()
     {
         $data=Noddes::all();
-        return view('createpost.index', ['data'=>$data]);
+        return view('admin.noddes.index', ['data'=>$data]);
     }
 
     /**
@@ -31,14 +31,8 @@ class NoddesController extends Controller
     {
         $data=Noddes::all();
         $datalist=Category::all();
-        return view('createpost.create', ['data'=>$data,'datalist'=>$datalist]);
+        return view('admin.noddes.create', ['data'=>$data,'datalist'=>$datalist]);
     }
-    /**public function create()
-    {
-        $data=Noddes::all();
-        $datalist=Category::all();
-        return view('createpost.create', ['data'=>$data,'datalist'=>$datalist]);
-    }**/
 
     /**
      * Store a newly created resource in storage.
@@ -60,7 +54,7 @@ class NoddesController extends Controller
             $data->file=$request->file('file')->store('noddefiles');
         }
         $data->save();
-        return redirect('createpost');
+        return redirect('admin/noddes');
     }
 
     /**
@@ -72,7 +66,7 @@ class NoddesController extends Controller
     public function show(Noddes $noddes, $id)
     {
         $data=Noddes::find($id);
-        return view('createpost.show', ['data'=>$data]);
+        return view('admin.noddes.show', ['data'=>$data]);
     }
 
     /**
@@ -85,7 +79,7 @@ class NoddesController extends Controller
     {
         $data=Noddes::find($id);
         $datalist=Category::all();
-        return view('createpost.edit', [
+        return view('admin.noddes.edit', [
             'data'=>$data,
             'datalist'=>$datalist
         ]);
@@ -112,7 +106,7 @@ class NoddesController extends Controller
             $data->file=$request->file('file')->store('noddefiles');
         }
         $data->save();
-        return redirect('createpost');
+        return redirect('admin/noddes');
     }
 
     /**
@@ -125,6 +119,6 @@ class NoddesController extends Controller
     {
         $data=Noddes::find($id);
         $data->delete();
-        return redirect('createpost');
+        return redirect('admin/noddes');
     }
 }

@@ -11,11 +11,11 @@
                 <h1>Nodde</h1>
             </div>
             <div class="menu-items">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">about</a></li>
-                <li><a href="#">blogs</a></li>
-                <li><a href="#">portfolio</a></li>
-                <li><a href="#">contact</a></li>
+                <li><a href="/" class="nav-link px-2 text-secondary">Anasayfa</a></li>
+                <li><a href="/category" class="nav-link px-2 text-white">Kategoriler</a></li>
+                <li><a href="/iletisim" class="nav-link px-2 text-white">İletişim</a></li>
+                <li><a href="/hakkimizda" class="nav-link px-2 text-white">Hakkımızda</a></li>
+                <li><a href="/faq" class="nav-link px-2 text-white">FAQ</a></li>
             </div>
         </div>
     </div>
@@ -30,8 +30,9 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="/" class="nav-link px-2 text-secondary">Anasayfa</a></li>
                 <li><a href="/category" class="nav-link px-2 text-white">Kategoriler</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">İletişim</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Hakkımızda</a></li>
+                <li><a href="/iletisim" class="nav-link px-2 text-white">İletişim</a></li>
+                <li><a href="/hakkimizda" class="nav-link px-2 text-white">Hakkımızda</a></li>
+                <li><a href="/faq" class="nav-link px-2 text-white">FAQ</a></li>
             </ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">

@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
 use App\Http\Controllers\AdminPanel\AdminNoddesController as AdminNoddesController;
 use App\Http\Controllers\NoddesController as NoddesController;
 use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryController;
+use App\Http\Controllers\AdminPanel\FaqController as FaqController;
+use App\Http\Controllers\AdminPanel\AdminIletisimController as AdminIletisimController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +29,9 @@ Route::get('/', function () {
 
 Route::get('/',[HomeController::class,'index'])->name(name:'home');
 Route::get('/category',[HomeController::class,'category'])->name(name:'category');
+Route::get('/iletisim',[HomeController::class,'iletisim'])->name(name:'iletisim');
+Route::get('/hakkimizda',[HomeController::class,'hakkimizda'])->name(name:'hakkimizda');
+Route::get('/faq',[HomeController::class,'faq'])->name(name:'faq');
 Route::prefix('/createpost')->name('noddes.')->controller(NoddesController::class)->group(function (){
     Route::get('/','index')->name(name:'noddes');
     Route::get('/create','create')->name(name:'noddes_create');
@@ -39,7 +44,9 @@ Route::prefix('/createpost')->name('noddes.')->controller(NoddesController::clas
 
 Route::prefix('admin')->name('admin.')->group(function (){
     //admin routes
-    Route::get('/',[AdminHomeController::class,'index'])->name(name:'admin');
+    Route::get('/',[AdminHomeController::class,'index'])->name(name:'index');
+    Route::get('/setting',[AdminHomeController::class,'setting'])->name(name:'setting');
+    Route::post('/setting',[AdminHomeController::class,'settingUpdate'])->name(name:'setting.update');
     //admin category
     Route::prefix('/category')->name('category.')->controller(AdminCategoryController::class)->group(function (){
         Route::get('/','index')->name(name:'admin_category');
@@ -50,6 +57,16 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::get('/destory/{id}','destroy')->name(name:'admin_category_destroy');
         Route::get('/show/{id}','show')->name(name:'admin_category_show');
     });
+    //admin faq
+    Route::prefix('/faq')->name('faq.')->controller(FaqController::class)->group(function (){
+        Route::get('/','index')->name(name:'admin_faq');
+        Route::get('/create','create')->name(name:'admin_faq_create');
+        Route::post('/store','store')->name(name:'admin_faq_store');
+        Route::get('/edit/{id}','edit')->name(name:'admin_faq_edit');
+        Route::post('/update/{id}','update')->name(name:'admin_faq_update');
+        Route::get('/destory/{id}','destroy')->name(name:'admin_faq_destroy');
+        Route::get('/show/{id}','show')->name(name:'admin_faq_show');
+    });
     //admin noddes
     Route::prefix('/noddes')->name('noddes.')->controller(AdminNoddesController::class)->group(function (){
         Route::get('/','index')->name(name:'admin_noddes');
@@ -59,6 +76,14 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::post('/update/{id}','update')->name(name:'admin_noddes_update');
         Route::get('/destory/{id}','destroy')->name(name:'admin_noddes_destroy');
         Route::get('/show/{id}','show')->name(name:'admin_noddes_show');
+    });
+    //admin iletisim
+    Route::prefix('/iletisim')->name('iletisim.')->controller(AdminIletisimController::class)->group(function (){
+        Route::get('/','index')->name(name:'iletisim');
+        Route::get('/create','create')->name(name:'iletisim_create');
+        Route::post('/store','store')->name(name:'iletisim_store');
+        Route::get('/destory/{id}','destroy')->name(name:'admin_iletisim_destroy');
+        Route::get('/show/{id}','show')->name(name:'admin_iletisim_show');
     });
 });
 

@@ -1,4 +1,4 @@
-@extends('layouts.createpost')
+@extends('layouts.adminbase')
 
 @section('title','Nodde Admin Panel')
 
@@ -6,7 +6,7 @@
 @section('content')
     <div class="card" style="width: 70%; margin-left: 20%;">
         <div class="card-header" style="margin-top: 5%;">
-            <div class="card-title">{{$data->title}}</div>
+            <div class="card-title">{{$data->question}}</div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -17,15 +17,14 @@
                         <th>Açıklama</th>
                         <th>Anahtar Kelimeler</th>
                         <th>Durum</th>
-                        <th>Resim</th>
                         <th>Düzenle</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <th scope="row">1</th>
-                        <td>{{$data->description}}</td>
-                        <td>{{$data->keywords}}</td>
+                        <td>{{$data->question}}</td>
+                        <td>{{$data->answer}}</td>
                         <td>{{$data->status}}</td>
                         <td>Table cell</td>
                         <td><div class="card-action">

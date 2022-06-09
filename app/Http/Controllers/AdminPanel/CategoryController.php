@@ -125,7 +125,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category,$id)
     {
-        $data=Category::find($id);
+        $data = Category::find($id);
         Storage::delete($data->image);
         $data->delete();
         return redirect('admin/category');

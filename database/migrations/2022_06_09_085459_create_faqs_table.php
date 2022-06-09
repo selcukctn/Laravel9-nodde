@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('faqs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('name');
-            $table->foreignId('email');
-            $table->string('phone')->nullable();
-            $table->string('subject')->nullable();
-            $table->string('message');
-            $table->string('ip')->nullable();
+            $table->string('question');
+            $table->string('answer');
             $table->string('status',length: 6)->default('True');
             $table->timestamps();
         });
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('faqs');
     }
 };

@@ -9,6 +9,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
+    <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/x-icon"/>
     <link href="{{ asset('css/kategori.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('css/homepage.css') }}" rel="stylesheet" type="text/css"/>
     <!-- Favicons -->
