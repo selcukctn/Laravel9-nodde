@@ -79,9 +79,9 @@
         <div class="content_container">
             <div class="content_desc">
                 <div class="container">
-                    <form action="/createpost/commentstore" method="post" enctype="multipart/form-data">
+                    <form action="{{route('storecomment')}}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <label for="fname">username</label>
-                        <input type="text" id="fname" name="firstname" placeholder="Your name..">
                         <label for="country">Oy ver</label>
                         <select id="country" name="rate">
                             <option value="1">1</option>

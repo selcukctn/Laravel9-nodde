@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 use App\Models\Category;
+use App\Models\comments;
 use App\Models\faq;
 use App\Models\Noddes;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use  Illuminate\Contracts\Queue\QueueableCollection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 class HomeController extends Controller
@@ -45,6 +47,17 @@ class HomeController extends Controller
             ]
         );
 
+    }
+    public function storecomment(Request $request)
+    {
+        $data=new comments();
+        $data->noddes_id=$request->noddes_id;
+        $data->rate=$request->rate;
+        $data->user_id=Auth::id() ? Auth::id() : 0;
+        $data->comment = $request->comment;
+        $data->status = false;
+        $data->save();
+        return redirect('/');
     }
 
 
