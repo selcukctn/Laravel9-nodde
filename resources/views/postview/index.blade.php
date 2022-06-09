@@ -78,6 +78,14 @@
     <div class="n">
         <div class="content_container">
             <div class="content_desc">
+                @foreach($nod as $nod)
+                    @if($nod->user_id==0)
+                        <h4>Guest</h4>
+                    @else
+                        <h4>username</h4>
+                    @endif
+                    <p>{{$nod->comment}}</p>
+                @endforeach
                 <div class="container">
                     <form action="{{route('storecomment')}}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -97,18 +105,19 @@
                 </div>
             </div>
         </div>
+
     </div>
 
 <script type="text/javascript">
     let flag=0;
     function getVal() {
         if(flag==0){
-            document.getElementById("imageharrik").className="pop"
             flag=1;
+            document.getElementById("imageharrik").className="pop"
         }
         else{
-            document.getElementById("imageharrik").className="pop"
             flag=0;
+            document.getElementById("imageharrik").className="pop"
         }
     }
 </script>

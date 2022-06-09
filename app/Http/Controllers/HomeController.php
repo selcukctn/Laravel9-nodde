@@ -11,6 +11,8 @@ use  Illuminate\Contracts\Queue\QueueableCollection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use function GuzzleHttp\Promise\all;
+
 class HomeController extends Controller
 {
     public function index(){
@@ -41,9 +43,11 @@ class HomeController extends Controller
     public function postview(Noddes $noddes, $id){
         $datalist=Category::all();
         $data=DB::table('noddes')->where('id',$id)->get();
+        $nod=DB::table('comments')->where('noddes_id',$id)->get();
         return view('postview.index',[
                 'data'=>$data,
-                'datalist'=>$datalist
+                'datalist'=>$datalist,
+                'nod' => $nod
             ]
         );
 
@@ -60,6 +64,5 @@ class HomeController extends Controller
 
         return redirect()->route('noddes.noddes_show',['id'=>$request->input('noddes_id')]);
     }
-
 
 }

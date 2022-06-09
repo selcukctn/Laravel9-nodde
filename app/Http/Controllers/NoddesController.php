@@ -82,8 +82,10 @@ class NoddesController extends Controller
     {
         $datalist=Category::all();
         $data=DB::table('noddes')->where('id',$id)->get();
+        $nod=DB::table('comments')->where('noddes_id',$id)->get();
         return view('postview.index',[
-                'data'=>$data,'datalist'=>$datalist
+                'data'=>$data,'datalist'=>$datalist,
+                'nod'=>$nod
             ]
         );
     }

@@ -81,6 +81,13 @@ Route::prefix('admin')->name('admin.')->group(function (){
         Route::get('/destory/{id}','destroy')->name(name:'admin_noddes_destroy');
         Route::get('/show/{id}','show')->name(name:'admin_noddes_show');
     });
+    //admin comments
+    Route::prefix('/comments')->name('comments.')->controller(\App\Http\Controllers\AdminPanel\AdminCommentsController::class)->group(function (){
+        Route::get('/','index')->name(name:'admin_noddes');
+        Route::get('/edit/{id}','edit')->name(name:'admin_noddes_edit');
+        Route::post('/update/{id}','update')->name(name:'admin_noddes_update');
+        Route::get('/destory/{id}','destroy')->name(name:'admin_noddes_destroy');
+    });
     //admin iletisim
     Route::prefix('/iletisim')->name('iletisim.')->controller(AdminIletisimController::class)->group(function (){
         Route::get('/','index')->name(name:'iletisim');
