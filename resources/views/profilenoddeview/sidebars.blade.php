@@ -7,14 +7,12 @@
     <ul class="list-unstyled ps-0">
         @foreach($datalist as $rs)
             <li class="mb-1">
-                @if($rs->parent_id == 0)
-                <option value="{{$rs->id}}" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-                   {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}
-                </option>
-                @endif
+                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                    {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}
+                </button>
                 <div class="collapse" id="home-collapse" style="">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="/selectcategory/{{$rs->id}}" class="link-dark rounded">{{$rs->title}}</a></li>
+                        <li><a href="#" class="link-dark rounded">Php</a></li>
                     </ul>
                 </div>
             </li>

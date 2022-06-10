@@ -22,7 +22,7 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="squareInput">Kategori Adı</label>
+                        <label for="squareInput">Nodde Adı</label>
                         <input type="text" class="form-control input-square" id="squareInput" value="{{$data->title}}"  name="title" required>
                     </div>
                     <div class="form-group">
@@ -30,8 +30,20 @@
                         <input type="text" class="form-control input-square" id="squareInput" value="{{$data->description}}" name="description">
                     </div>
                     <div class="form-group">
+                        <label for="squareInput">Detaylar</label>
+                        <input type="text" class="form-control input-square" id="squareInput" value="{{$data->detail}}" name="detail">
+                    </div>
+                    <div class="form-group">
                         <label for="squareInput">Anahtar Kelimeler</label>
-                        <input type="text" class="form-control input-square" id="squareInput" value="{{$data->keywords}}" >
+                        <input type="text" class="form-control input-square" id="squareInput" value="{{$data->keywords}}" name="keywords">
+                    </div>
+                    <div class="form-group">
+                        <label for="squareInput">Anahtar Kelimeler</label>
+                        <input type="text" class="form-control input-square" id="squareInput" value="{{$data->user_id}}" name="user_id">
+                    </div>
+                    <div class="form-group">
+                        <label for="squareInput">Kategori ID</label>
+                        <input type="text" class="form-control input-square" id="squareInput" value="{{$data->category_id}}" name="category_id">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Gizle-Göster</label>
@@ -43,7 +55,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Dosya Seç</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" value="{{$data->file}}">
                     </div>
                 </div>
                 <div class="card-action">

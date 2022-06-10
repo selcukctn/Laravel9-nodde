@@ -39,8 +39,8 @@
                             <td>{{$rs->message}}</td>
                             <td>{{$rs->ip}}</td>
                             <td>{{$rs->status}}</td>
-                            <td><a href="/admin/category/destroy/{{$rs->id}}/">Delete</a></td>
-                            <td><a href="/admin/category/show/{{$rs->id}}/">Show</a></td>
+                            <td><a href="/admin/iletisim/destroy/{{$rs->id}}/">Delete</a></td>
+                            <td><a href="/admin/iletisim/show/{{$rs->id}}/">Show</a></td>
                         </tr>
                     @endforeach
                     </tbody>

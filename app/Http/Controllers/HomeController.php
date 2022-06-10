@@ -47,7 +47,8 @@ class HomeController extends Controller
         return view('postview.index',[
                 'data'=>$data,
                 'datalist'=>$datalist,
-                'nod' => $nod
+                'nod' => $nod,
+                'user' => $user,
             ]
         );
 

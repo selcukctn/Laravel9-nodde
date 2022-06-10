@@ -8,6 +8,7 @@ use App\Models\Noddes;
 use http\Params;
 use Illuminate\Http\Request;
 use  Illuminate\Contracts\Queue\QueueableCollection;
+use Illuminate\Support\Facades\Storage;
 
 class AdminNoddesController extends Controller
 {
@@ -96,7 +97,7 @@ class AdminNoddesController extends Controller
     {
         $data=Noddes::find($id);
         $data->category_id=$request->category_id;
-        $data->user_id=0;
+        $data->user_id=$request->user_id;
         $data->title = $request->title;
         $data->description = $request->description;
         $data->detail = $request->detail;
@@ -118,6 +119,8 @@ class AdminNoddesController extends Controller
     public function destroy(Request $request, Noddes $nodde,$id)
     {
         $data=Noddes::find($id);
+        if($data->image)
+            Storage::delete($data->image);
         $data->delete();
         return redirect('admin/noddes');
     }

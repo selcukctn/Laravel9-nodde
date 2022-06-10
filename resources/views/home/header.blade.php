@@ -36,13 +36,19 @@
             </ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                <input type="search" class="form-control form-control-dark" placeholder="Ara..." aria-label="Search">
+                <!--<input type="search" class="form-control form-control-dark" placeholder="Ara..." aria-label="Search">-->
             </form>
 
-            <div class="text-end">
-                <a href="/login" type="button" class="btn btn-outline-light me-2">Giriş Yap</a>
-                <a href="/register" type="button" class="btn btn-outline-light me-2">Kayıt ol</a>
-            </div>
+            @if(\Illuminate\Support\Facades\Auth::id()==0)
+                <div class="text-end">
+                    <a href="/login" type="button" class="btn btn-outline-light me-2">Giriş Yap</a>
+                    <a href="/register" type="button" class="btn btn-outline-light me-2">Kayıt ol</a>
+                </div>
+            @else
+                <div class="text-end">
+                    <a href="/dashboard" type="button" class="btn btn-outline-light me-2">{{\Illuminate\Support\Facades\Auth::user()->name}} | Profile Git</a>
+                </div>
+            @endif
         </div>
     </div>
 </header>

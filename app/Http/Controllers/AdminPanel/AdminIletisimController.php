@@ -7,6 +7,7 @@ use App\Models\messages;
 use http\Params;
 use Illuminate\Http\Request;
 use  Illuminate\Contracts\Queue\QueueableCollection;
+use Illuminate\Support\Facades\Storage;
 
 class AdminIletisimController extends Controller
 {

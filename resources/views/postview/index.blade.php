@@ -1,24 +1,33 @@
 @extends('layouts.catagory')
 
 @section('title','Nodde')
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <style>
     .pop{
-        position: absolute;
-        width: 70%;
-        height: 70%;
-        top: 20%;
-        left: 20%;
+        width: 100%;
+        height: 100%;
+        display: block;
+        position:absolute;
     }
     .normal{
-        width: 20%;height:30%;margin-left: 43%;margin-top: 20px;}
+        width: 20%;
+        height:30%;
+        margin-left: 43%;
+        margin-top: 20px;
+        position:absolute;
+    }
+    .none{
+        display: none;
+    }
     .v{
         flex-direction: column;
     }
     .n{
-        width: 100%; height: auto; justify-content: center; align-items: center; display: flex; margin-left: 3%;
-        position: absolute;
-        bottom: -30%;
+        width: 100%;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin-top: 20%;
     }
     .n2{
         margin-left: 20%;
@@ -53,8 +62,11 @@
         background-color: #f2f2f2;
         padding: 20px;
     }
+
 </style>
-<body class="v">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body class="v" id="b">
 @section('content')
     @foreach($data as $rs)
         <div class="n2">
@@ -72,24 +84,21 @@
         </div>
     </div></div>
     @endforeach
-@endsection
-</body>
 
-    <div class="n">
+    <div class="n" id="a">
         <div class="content_container">
             <div class="content_desc">
                 @foreach($nod as $nod)
                     @if($nod->user_id==0)
-                        <h4>Guest</h4>
+                        <h4>Guest | Rate: {{$nod->rate}}</h4>
                     @else
-                        <h4>username</h4>
+                        <h4>@foreach($user as $r){{$r->name}}@endforeach | Rate: {{$nod->rate}}</h4>
                     @endif
                     <p>{{$nod->comment}}</p>
                 @endforeach
                 <div class="container">
                     <form action="{{route('storecomment')}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <label for="fname">username</label>
                         <label for="country">Oy ver</label>
                         <select id="country" name="rate">
                             <option value="1">1</option>
@@ -107,6 +116,10 @@
         </div>
 
     </div>
+@endsection
+
+</body>
+
 
 <script type="text/javascript">
     let flag=0;
@@ -114,10 +127,12 @@
         if(flag==0){
             flag=1;
             document.getElementById("imageharrik").className="pop"
+            document.getElementById("a").className="none"
         }
         else{
             flag=0;
-            document.getElementById("imageharrik").className="pop"
+            document.getElementById("imageharrik").className="normal"
+            document.getElementById("a").className="n"
         }
     }
 </script>

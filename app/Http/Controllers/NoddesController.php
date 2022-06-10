@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use  Illuminate\Contracts\Queue\QueueableCollection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 class NoddesController extends Controller
 {
     /**
@@ -47,7 +49,10 @@ class NoddesController extends Controller
     {
         $data=new Noddes();
         $data->category_id=$request->category_id;
-        $data->user_id=Auth::id() ? Auth::id() : 0;
+        if(Auth::check())
+            $data->user_id=Auth::id();
+        else
+            $data->user_id=0;
         $data->title = $request->title;
         $data->description = $request->description;
         $data->detail = $request->detail;
@@ -58,6 +63,19 @@ class NoddesController extends Controller
         }
         $data->save();
         return redirect('category');
+    }
+    public function mynoddes(){
+        $data=Noddes::all();
+        $datalist=Category::all();
+        $userId=Auth::id();
+        return view('sharedview.index', ['data'=>$data, 'datalist'=>$datalist, 'userId'=>$userId]);
+    }
+    public function mycategory($id){
+        $catId=$id;
+        $data=Noddes::all();
+        $datalist=Category::all();
+        $userId=Auth::id();
+        return view('selectcategory.index', ['data'=>$data, 'datalist'=>$datalist, 'userId'=>$userId, 'catId'=>$catId]);
     }
     public function storecomment(Request $request)
     {
@@ -83,9 +101,12 @@ class NoddesController extends Controller
         $datalist=Category::all();
         $data=DB::table('noddes')->where('id',$id)->get();
         $nod=DB::table('comments')->where('noddes_id',$id)->get();
+        $userid = Auth::id();
+        $user=DB::table('users')->where('id',$userid)->get();
         return view('postview.index',[
                 'data'=>$data,'datalist'=>$datalist,
-                'nod'=>$nod
+                'nod'=>$nod,
+                'user' => $user,
             ]
         );
     }
@@ -139,7 +160,17 @@ class NoddesController extends Controller
     public function destroy(Request $request, Noddes $noddes,$id)
     {
         $data=Noddes::find($id);
+        if($data->image)
+            Storage::delete($data->image);
         $data->delete();
-        return redirect('admin/noddes');
+        return redirect('/category');
+    }
+    public function destroymy(Request $request, Noddes $noddes,$id)
+    {
+        $data=Noddes::find($id);
+        if($data->image)
+            Storage::delete($data->image);
+        $data->delete();
+        return redirect('/sharedview');
     }
 }
