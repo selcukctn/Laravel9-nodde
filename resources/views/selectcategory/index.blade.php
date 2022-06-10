@@ -19,7 +19,16 @@
     }
 </style>
     @foreach($data as $rs)
-        @if($rs->id==$catId)
+        @if(($rs->parent_id==0) && ($datalist[0]->id==$catId))
+            <div style="width: 100%; height: auto; justify-content: center; align-items: center; display: flex;">
+                <div class="content_container">
+                    <div class="content_desc">
+                        <a href="/createpost/show/{{$rs->id}}"><h4>{{$rs->title}}</h4></a>
+                        <p>{{$rs->detail}}</p>
+                    </div>
+                </div>
+            </div>
+        @elseif($rs->category_id==$catId)
             @if($rs->status)
                 <div style="width: 100%; height: auto; justify-content: center; align-items: center; display: flex;">
                     <div class="content_container">
