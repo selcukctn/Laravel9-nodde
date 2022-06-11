@@ -18,29 +18,17 @@
         flex-direction: row;
     }
 </style>
-    @foreach($data as $rs)
-        @if(($rs->parent_id==0) && ($datalist[0]->id==$catId))
-            <div style="width: 100%; height: auto; justify-content: center; align-items: center; display: flex;">
-                <div class="content_container">
-                    <div class="content_desc">
-                        <a href="/createpost/show/{{$rs->id}}"><h4>{{$rs->title}}</h4></a>
-                        <p>{{$rs->detail}}</p>
-                    </div>
+@foreach($data as $rs)
+        <div style="width: 100%; height: auto; justify-content: center; align-items: center; display: flex;">
+            <div class="content_container">
+                <div class="content_desc">
+                    <a href="/createpost/show/{{$rs->id}}"><h4>{{$rs->title}}</h4></a>
+                    <p>{{$rs->detail}}</p>
                 </div>
             </div>
-        @elseif($rs->category_id==$catId)
-            @if($rs->status)
-                <div style="width: 100%; height: auto; justify-content: center; align-items: center; display: flex;">
-                    <div class="content_container">
-                        <div class="content_desc">
-                            <a href="/createpost/show/{{$rs->id}}"><h4>{{$rs->title}}</h4></a>
-                            <p>{{$rs->detail}}</p>
-                        </div>
-                    </div>
-                </div>
-            @endif
-        @endif
-    @endforeach
+        </div>
+@endforeach
+
     <div class="buttons_area" style="margin-bottom:10px;width: 100%; height: auto; justify-content: center; align-items: center; display: flex;">
         <a href="/createpost" class="nav-link px-2 text-white"><button type="button" class="btn btn-warning">Paylaş</button></a>
     </div>

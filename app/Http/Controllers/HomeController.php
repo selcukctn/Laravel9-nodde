@@ -19,6 +19,9 @@ class HomeController extends Controller
         $data=Noddes::all();
         return view('home.index', ['data'=>$data]);
     }
+    public static function mainCategory(){
+        return Category::where('parent_id', '=',0)->with('children')->get();
+    }
     public function category(){
         $data=Noddes::all();
         $datalist=Category::all();
@@ -51,8 +54,8 @@ class HomeController extends Controller
                 'user' => $user,
             ]
         );
-
     }
+
     public function storecomment(Request $request)
     {
         $data=new comments();

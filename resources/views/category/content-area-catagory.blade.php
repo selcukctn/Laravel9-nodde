@@ -153,11 +153,12 @@
     <!--Content End-->
 </div>
 <script>
-    let slideIndex = 1;
+    let slideIndex = 0;
     showSlides(slideIndex);
 
     function plusSlides(n) {
         showSlides(slideIndex += n);
+
     }
 
     function currentSlide(n) {
@@ -178,5 +179,7 @@
         }
         slides[slideIndex-1].style.display = "block";
         dots[slideIndex-1].className += " active";
+         // Change image every 2 seconds
+        setTimeout(showSlides(slideIndex), 10000);
     }
 </script>

@@ -5,20 +5,27 @@
         <span class="fs-5 fw-semibold">Nodde</span>
     </a>
     <ul class="list-unstyled ps-0">
-        @foreach($datalist as $rs)
+        @php
+              use App\Http\Controllers\HomeController;
+                $parentCategories =HomeController::mainCategory();
+        @endphp
+
+           @foreach($parentCategories as $rs)
+
             <li class="mb-1">
-                @if($rs->parent_id == 0)
                 <option value="{{$rs->id}}" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-                   {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}
+                    {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}
                 </option>
-                @endif
                 <div class="collapse" id="home-collapse" style="">
+                @if(count($rs->children))
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                        <li><a href="/selectcategory/{{$rs->id}}" class="link-dark rounded">{{$rs->title}}</a></li>
+                        @include('home.categorytree',['children'=>$rs->children])
                     </ul>
-                </div>
-            </li>
-        @endforeach
+                @else
+
+                @endif</li>
+            @endforeach
+
     </ul>
 </div>
 <!--sidebars end-->

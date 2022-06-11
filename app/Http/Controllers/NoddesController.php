@@ -72,10 +72,13 @@ class NoddesController extends Controller
     }
     public function mycategory($id){
         $catId=$id;
-        $data=Noddes::all();
-        $datalist=Category::all();
+        $datalist = DB::table('categories')->where('id',$catId)->get();
+        $data=DB::table('noddes')->where('category_id',$catId)->get();
         $userId=Auth::id();
         return view('selectcategory.index', ['data'=>$data, 'datalist'=>$datalist, 'userId'=>$userId, 'catId'=>$catId]);
+    }
+    public function mainCategory(){
+        return Category::where('parent_id', '=',0)->with('children')->get();
     }
     public function storecomment(Request $request)
     {
@@ -100,16 +103,14 @@ class NoddesController extends Controller
     {
         $datalist=Category::all();
         $data=DB::table('noddes')->where('id',$id)->get();
-        $nod=DB::table('comments')->where('noddes_id',$id)->get();
-        $userid = Auth::id();
-        $user=DB::table('users')->where('id',$userid)->get();
+        $nod=comments::with('user')->where('noddes_id',$id)->get();
         return view('postview.index',[
                 'data'=>$data,'datalist'=>$datalist,
                 'nod'=>$nod,
-                'user' => $user,
             ]
         );
     }
+
 
     /**
      * Show the form for editing the specified resource.

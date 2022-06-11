@@ -92,7 +92,8 @@
                     @if($nod->user_id==0)
                         <h4>Guest | Rate: {{$nod->rate}}</h4>
                     @else
-                        <h4>@foreach($user as $r){{$r->name}}@endforeach | Rate: {{$nod->rate}}</h4>
+
+                        <h4  id="h4"> {{$nod->user->name}} | Rate: {{$nod->rate}}</h4>
                     @endif
                     <p>{{$nod->comment}}</p>
                 @endforeach
@@ -120,7 +121,6 @@
 
 </body>
 
-
 <script type="text/javascript">
     let flag=0;
     function getVal() {
@@ -128,6 +128,9 @@
             flag=1;
             document.getElementById("imageharrik").className="pop"
             document.getElementById("a").className="none"
+            console.log(document.getElementById("imageharrik").className);
+            //let b=document.getElementById("h4").valueOf();
+            //document.getElementById("h4").valueOf(b.innerHTML.toString().substr(19,b.innerHTML.toString().indexOf(',')-4));
         }
         else{
             flag=0;
@@ -135,4 +138,5 @@
             document.getElementById("a").className="n"
         }
     }
+
 </script>

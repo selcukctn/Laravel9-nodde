@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('noddes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->nullable();
+            $table->foreignId('parent_id')->nullable();
             $table->foreignId('user_id')->nullable();
             $table->string('title');
             $table->string('keywords')->nullable();

@@ -57,8 +57,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-    public function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function comments(): \Illuminate\Database\Eloquent\Relations\HasManyBelongsTo
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(comments::class);
     }
 }

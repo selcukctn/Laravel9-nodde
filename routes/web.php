@@ -36,25 +36,25 @@ Route::post('/storecomment',[HomeController::class,'storecomment'])->name(name:'
 Route::get('/faq',[HomeController::class,'faq'])->name(name:'faq');
 Route::get('/createpost/show/{id}',[NoddesController::class,'show'])->name(name:'noddes_show');
 
-Route::prefix('selectcategory')->name('noddes.')->controller(NoddesController::class)->group(function (){
-    Route::get('/{id}','mycategory')->name(name:'noddes');
+Route::prefix('selectcategory')->name('select.')->controller(NoddesController::class)->group(function (){
+    Route::get('/{id}','mycategory')->name(name:'index');
     Route::get('/create','create')->name(name:'noddes_create');
     Route::post('/store','store')->name(name:'noddes_store');
     Route::get('/edit/{id}','edit')->name(name:'noddes_edit');
     Route::post('/update/{id}','update')->name(name:'noddes_update');
     Route::get('/destroy/{id}','destroymy')->name(name:'noddes_destroy');
-    Route::get('/show/{id}','show')->name(name:'noddes_show');
+    Route::get('/myshow/{id}','show')->name(name:'select_show');
 });
 
 
-Route::prefix('sharedview')->name('noddes.')->controller(NoddesController::class)->group(function (){
+Route::prefix('sharedview')->name('sharedview.')->controller(NoddesController::class)->group(function (){
     Route::get('/','mynoddes')->name(name:'noddes');
     Route::get('/create','create')->name(name:'noddes_create');
     Route::post('/store','store')->name(name:'noddes_store');
     Route::get('/edit/{id}','edit')->name(name:'noddes_edit');
     Route::post('/update/{id}','update')->name(name:'noddes_update');
     Route::get('/destroymy/{id}','destroymy')->name(name:'noddes_destroy');
-    Route::get('/show/{id}','show')->name(name:'noddes_show');
+    Route::get('/show/{id}','show')->name(name:'sharedview_show');
 });
 
 
