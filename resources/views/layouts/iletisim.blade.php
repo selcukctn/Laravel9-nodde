@@ -80,7 +80,7 @@
                 <label>Mesaj</label>
             </div>
         </div>
-        <div class="col-xs-12">
+        <div class="col-xs-12" style="margin-top: 100%">
             <button class="btn btn-success" type="submit">Gönder</button>
         </div>
         </form>
